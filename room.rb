@@ -39,5 +39,8 @@ class Room
     @playlist.delete(song_to_remove)
   end 
 
+  def space_left?
+    return @max_limit == guest_array.count
+  end 
 
 end

@@ -69,6 +69,12 @@ class TestRoom < MiniTest::Test
    assert_equal(0, @room3.playlist.count)
   end  
 
+  def test_check_space
+    refute(@room2.space_left?)
+  end 
 
+  def test_no_space
+    assert(@room3.space_left?)
+  end 
   
 end
