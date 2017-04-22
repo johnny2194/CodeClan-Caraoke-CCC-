@@ -27,4 +27,17 @@ class Room
   def add_song(song)
     @playlist << song
   end 
+
+  def remove_song_by_artist(song_artist)
+    song_to_remove = @playlist.find(){|song| song_artist == song.artist}
+    @playlist.delete(song_to_remove)
+  end 
+
+
+  def remove_song_by_title(song_title)
+    song_to_remove = @playlist.find(){|song| song_title == song.title}
+    @playlist.delete(song_to_remove)
+  end 
+
+
 end

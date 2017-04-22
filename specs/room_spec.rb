@@ -8,10 +8,13 @@ class TestRoom < MiniTest::Test
   def setup 
   @room1 = Room.new("Rock Room", 50)
   @guest1 = Guest.new("Johnny", 200, "Livin on a prayer")
+  @guest2 = Guest.new("Susan", 60, "I don't want to close my eyes")
   @room2 = Room.new("Rock Room", 50)
   @room2.check_guest_in(@guest1)
   @song1 = Song.new("Bon Jovi", "Livin on a prayer")
-  
+  @room3 = Room.new("Ballad Lounge", 1)
+  @room3.add_song(@song1)
+  @room3.check_guest_in(@guest1)
   end 
 
   def test_get_name
@@ -55,4 +58,17 @@ class TestRoom < MiniTest::Test
     @room2.add_song(@song1)
     assert_equal(1, @room2.playlist.count)
   end 
+
+  def test_can_remove_song_by_artist
+   @room3.remove_song_by_artist("Bon Jovi")
+   assert_equal(0, @room3.playlist.count)
+  end 
+
+  def test_can_remove_song_by_title
+   @room3.remove_song_by_title("Livin on a prayer")
+   assert_equal(0, @room3.playlist.count)
+  end  
+
+
+  
 end
