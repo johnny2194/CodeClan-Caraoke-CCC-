@@ -1,11 +1,12 @@
 class Room
 
-  attr_reader :name, :max_limit, :guest_array, :playlist
+  attr_reader :name, :max_limit, :guest_array, :playlist, :waiting_list
   def initialize(name, max_limit)
     @name = name 
     @max_limit = max_limit
     @guest_array = []
     @playlist = []
+    @waiting_list = []
 
   end 
 
@@ -42,5 +43,14 @@ class Room
   def space_left?
     return @max_limit == guest_array.count
   end 
+
+  def add_guest_to_waiting_list(guest)
+    @waiting_list <<  guest
+  end 
+
+  def remove_guest_from_waiting_list_by_name(guest_name)
+    guest_to_remove = @waiting_list.find(){|guest| guest_name == guest.name }
+    @waiting_list.delete(guest_to_remove) 
+  end
 
 end

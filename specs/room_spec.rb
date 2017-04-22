@@ -15,6 +15,7 @@ class TestRoom < MiniTest::Test
   @room3 = Room.new("Ballad Lounge", 1)
   @room3.add_song(@song1)
   @room3.check_guest_in(@guest1)
+  @room2.add_guest_to_waiting_list(@guest1)
   end 
 
   def test_get_name
@@ -77,4 +78,17 @@ class TestRoom < MiniTest::Test
     assert(@room3.space_left?)
   end 
   
+  def waiting_list_empty
+    assert_equal(0, @room1.waiting_list.count)
+  end 
+
+  def test_add_guest_to_waiting_list
+    @room1.add_guest_to_waiting_list(@guest1)
+    assert_equal(1, @room1.waiting_list.count)
+  end
+
+  def test_remove_guest_from_waiting_list
+   @room2.remove_guest_from_waiting_list_by_name("Johnny")
+   assert_equal(0, @room2.waiting_list.count)
+  end 
 end
