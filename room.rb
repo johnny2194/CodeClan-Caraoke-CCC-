@@ -23,4 +23,8 @@ class Room
     guest_to_check_out = @guest_array.find(){|guest| guest_fav_song == guest.fav_song}
     @guest_array.delete(guest_to_check_out)
   end 
+
+  def add_song(song)
+    @playlist << song
+  end 
 end
