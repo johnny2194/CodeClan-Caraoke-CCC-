@@ -3,12 +3,6 @@ Venue
 # Name - string
 # Max_limit - string
 # Admission Fee - integer
-check_in()
-check_out()
-max_limit()
-wait_list()
-add_guest_to_waitlist
-one_in_one_out()
 
 
 Room < Venue
@@ -17,6 +11,12 @@ Name - string
 Max limit - integer
 guests - array
 wait_list - array
+check_in()
+check_out()
+max_limit()
+wait_list()
+add_guest_to_waitlist
+one_in_one_out()
 ----------
 add_songs()
 
