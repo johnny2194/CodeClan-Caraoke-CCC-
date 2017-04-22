@@ -45,6 +45,9 @@ class TestRoom < MiniTest::Test
      @room2.check_guest_out_by_song("Livin on a prayer")
      assert_equal(0, @room2.guest_array.count)
   end  
-     
+
+  def test_playlist_empty
+    assert_equal(0, @room1.playlist.count)
+  end 
 
 end
