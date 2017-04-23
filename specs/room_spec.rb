@@ -10,10 +10,13 @@ class TestRoom < MiniTest::Test
   @room2 = Room.new("Rock Room", 50)
   @room3 = Room.new("Ballad Lounge", 1)
   @room4 = Room.new("Classic Town", 1)
+  @room5 = Room.new("Ballad Lounge", 2)
   @guest1 = Guest.new("Johnny", 200, "Livin on a prayer")
   @guest2 = Guest.new("Susan", 60, "I don't want to close my eyes")
   @guest3 = Guest.new("Dave", 50, "Don't stop believin")
+  @guest4 = Guest.new("Dannielle", 100, "Don't stop believin")
   @song1 = Song.new("Bon Jovi", "Livin on a prayer")
+  @song2 = Song.new("Journey", "Don't stop believin")
   @room2.check_guest_in(@guest1)
   @room2.add_guest_to_waiting_list(@guest1)
   @room3.add_song(@song1)
@@ -21,6 +24,9 @@ class TestRoom < MiniTest::Test
   @room4.add_guest_to_waiting_list(@guest1)
   @room4.add_guest_to_waiting_list(@guest2)
   @room4.check_guest_in(@guest3)
+  @room5.check_guest_in(@guest3)
+  @room5.check_guest_in(@guest4)
+  @room5.add_song(@song2)
   end 
 
   def test_get_name
@@ -76,11 +82,11 @@ class TestRoom < MiniTest::Test
   end  
 
   def test_check_space
-    refute(@room2.space_left?)
+    refute(@room2.no_space_left?)
   end 
 
   def test_no_space
-    assert(@room3.space_left?)
+    assert(@room3.no_space_left?)
   end 
   
   def waiting_list_empty
@@ -103,7 +109,20 @@ class TestRoom < MiniTest::Test
     assert_equal(2, @room4.guest_array.count)
   end
 
+def test_current_song
+  
+  assert_equal("Don't stop believin", @room5.playlist[0].title)
+end
+
+
+  def test_whooo_for_every_person_in_room_with_favourite_song_playing_in_given_room
+     
+    assert_equal("Dave: WHOOOO!, Dannielle: WHOOOO!", @room5.whooo_if_favourite_song_playing)
   end
+
+
+
+
 
   # def test_admit_first_guest_in_line_when_there_is_space
   #   @room4.

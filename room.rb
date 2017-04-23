@@ -40,7 +40,7 @@ class Room
     @playlist.delete(song_to_remove)
   end 
 
-  def space_left?
+  def no_space_left?
     return @max_limit == guest_array.count
   end 
 
@@ -54,7 +54,26 @@ class Room
   end
 
   def remove_first_guest_in_line_add_to_room
+
    @guest_array.push @waiting_list.delete_at(0)
   end 
+
+
+  def whooo_if_favourite_song_playing
+    
+    new_array = []
+  @guest_array.each do |guest|
+
+    if guest.fav_song == playlist[0].title
+      
+      new_array << guest.name + ": WHOOOO!"
+    else
+      next
+    end
+   end
+      return new_array.join(", ")
+
+  end
+ 
 
 end

@@ -5,8 +5,9 @@ class Venue
     @name = name 
     @admission_fee = admission_fee
     @max_limit = max_limit
-
-  end 
+    
+  end
 
   
-end
+
+end 
