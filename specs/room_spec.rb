@@ -7,15 +7,20 @@ class TestRoom < MiniTest::Test
   
   def setup 
   @room1 = Room.new("Rock Room", 50)
+  @room2 = Room.new("Rock Room", 50)
+  @room3 = Room.new("Ballad Lounge", 1)
+  @room4 = Room.new("Classic Town", 1)
   @guest1 = Guest.new("Johnny", 200, "Livin on a prayer")
   @guest2 = Guest.new("Susan", 60, "I don't want to close my eyes")
-  @room2 = Room.new("Rock Room", 50)
-  @room2.check_guest_in(@guest1)
+  @guest3 = Guest.new("Dave", 50, "Don't stop believin")
   @song1 = Song.new("Bon Jovi", "Livin on a prayer")
-  @room3 = Room.new("Ballad Lounge", 1)
+  @room2.check_guest_in(@guest1)
+  @room2.add_guest_to_waiting_list(@guest1)
   @room3.add_song(@song1)
   @room3.check_guest_in(@guest1)
-  @room2.add_guest_to_waiting_list(@guest1)
+  @room4.add_guest_to_waiting_list(@guest1)
+  @room4.add_guest_to_waiting_list(@guest2)
+  @room4.check_guest_in(@guest3)
   end 
 
   def test_get_name
@@ -91,4 +96,23 @@ class TestRoom < MiniTest::Test
    @room2.remove_guest_from_waiting_list_by_name("Johnny")
    assert_equal(0, @room2.waiting_list.count)
   end 
+
+  def test_remove_first_guest_in_list_and_add_to_guest_array
+    @room4.remove_first_guest_in_line_add_to_room
+    assert_equal(1, @room4.waiting_list.count)
+    assert_equal(2, @room4.guest_array.count)
+  end
+
+  end
+
+  # def test_admit_first_guest_in_line_when_there_is_space
+  #   @room4.
+
+  # now test remove first guest in line - .shift 
+  #then create test and function that when room is full, adds guest to wait list
+  #create test and function that when guest leaves full room, the first person in line automatically is added to guest_array) 
+  #create venue class that charges guest on entry and has its own guest_array - this guest array will then feed into rooms arrays
+  #create bar class and sobriety level to guests (100)
+  #looks like its been a busy night, you're first in line
+
 end

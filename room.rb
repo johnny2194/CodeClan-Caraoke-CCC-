@@ -53,4 +53,8 @@ class Room
     @waiting_list.delete(guest_to_remove) 
   end
 
+  def remove_first_guest_in_line_add_to_room
+   @guest_array.push @waiting_list.delete_at(0)
+  end 
+
 end
