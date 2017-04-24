@@ -120,18 +120,4 @@ end
     assert_equal("Dave: WHOOOO!, Dannielle: WHOOOO!", @room5.whooo_if_favourite_song_playing)
   end
 
-
-
-
-
-  # def test_admit_first_guest_in_line_when_there_is_space
-  #   @room4.
-
-  # now test remove first guest in line - .shift 
-  #then create test and function that when room is full, adds guest to wait list
-  #create test and function that when guest leaves full room, the first person in line automatically is added to guest_array) 
-  #create venue class that charges guest on entry and has its own guest_array - this guest array will then feed into rooms arrays
-  #create bar class and sobriety level to guests (100)
-  #looks like its been a busy night, you're first in line
-
 end

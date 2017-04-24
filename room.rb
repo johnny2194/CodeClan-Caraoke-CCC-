@@ -67,8 +67,6 @@ class Room
     if guest.fav_song == playlist[0].title
       
       new_array << guest.name + ": WHOOOO!"
-    else
-      next
     end
    end
       return new_array.join(", ")
